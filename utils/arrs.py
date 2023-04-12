@@ -13,8 +13,14 @@ def get(array, index, default=None):
     """
     if index < 0:
         return default
-    if len(array) == 0:
+    elif len(array) == 0:
         return default
+    elif type(array) is not list:
+        return "Отсутствует список"
+    elif type(index) is not int:
+        return "Индекс не целое число"
+    elif array[index] is None:
+        return "В списке элемент None"
 
     return array[index]
 
@@ -43,5 +49,14 @@ def my_slice(coll, start=0, end=None):
             normalized_start = 0
         else:
             normalized_start += length
+
+    if type(normalized_start) is not int:
+        return "Начальный индекс не целое число"
+
+    if type(normalized_end) is not int:
+        return "Конечный индекс не целое число"
+
+    if type(coll) is not list:
+        return "Отсутствует список"
 
     return coll[normalized_start:normalized_end]
